@@ -23,6 +23,8 @@ Baseline assumptions from Ariakit's getting-started guide:
 - Read [references/providers-and-stores.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/ariakit/references/providers-and-stores.md) when the task involves controlled state, uncontrolled defaults, shared stores, `useStoreState`, `getState()`, provider boundaries, or context-based helper components.
 - Read [references/composition-and-styling.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/ariakit/references/composition-and-styling.md) when the task requires `render`, custom elements, router integration, motion libraries, design-system wrappers, overlay animation, or advanced Ariakit styling.
 - Read [references/coding-guidelines.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/ariakit/references/coding-guidelines.md) when creating new Ariakit wrappers, examples, or documentation-quality code and the host repository does not already impose a different style.
+- Read [references/examples-checkbox.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/ariakit/references/examples-checkbox.md) when implementing custom checkbox visuals, checkbox-as-button toggles, or grouped checkbox selection.
+- Read [references/examples-combobox.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/ariakit/references/examples-combobox.md) when implementing advanced combobox behavior such as filtering, disclosure, cancel controls, grouped items, multi-select, links, textarea rendering, tabs, or Radix integration.
 
 ## Workflow
 
