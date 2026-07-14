@@ -24,6 +24,8 @@ Baseline assumptions from Mantine's getting-started and `@mantine/core` package 
 - Read [references/extensions.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/mantine-ui/references/extensions.md) when the requested feature may require Mantine dates, charts, notifications, spotlight, carousel, dropzone, modals, rich text editor, navigation progress, or a Mantine-compatible community extension.
 - Read [references/form-and-hooks.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/mantine-ui/references/form-and-hooks.md) when the task involves `@mantine/form`, input binding, validation, `getInputProps`, uncontrolled form mode, or Mantine hooks for custom interactions and state management.
 - Read [references/provider-and-theme.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/mantine-ui/references/provider-and-theme.md) when the task involves advanced `MantineProvider` behavior, color scheme persistence, forced color schemes, CSS variable injection, or root-level theme configuration.
+- Read [references/styling.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/mantine-ui/references/styling.md) when the task involves CSS imports, CSS modules, style props, inline styles, stylesheet ordering, CSS layers, or theme-token-based styling.
+- Read [references/theme-system.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/mantine-ui/references/theme-system.md) when the task involves `createTheme`, theme object overrides, custom colors, semantic colors, color schemes, or app-wide component defaults.
 
 ## Workflow
 
@@ -43,6 +45,7 @@ Baseline assumptions from Mantine's getting-started and `@mantine/core` package 
 - `@mantine/hooks` is also part of the standard foundation setup.
 - Mantine components should live under a correctly configured `MantineProvider`.
 - Load required CSS files at the app root, including additional package styles only for packages actually used.
+- Import `@mantine/core` styles before any other Mantine package styles.
 - If the app uses SSR, set up `ColorSchemeScript` and `mantineHtmlProps` correctly to avoid hydration warnings.
 - `MantineProvider` should be mounted once at the application root.
 - Use advanced provider props only when the application actually needs them.
@@ -71,12 +74,21 @@ Baseline assumptions from Mantine's getting-started and `@mantine/core` package 
 - Use official Mantine extensions when the requested feature is closer to a specialized subsystem than a single component.
 - Use Mantine hooks to support custom interaction logic when they clearly reduce glue code and fit the existing stack.
 
+### Styling
+
+- Prefer component-specific props such as `variant`, `color`, `size`, and `radius` first.
+- Prefer CSS modules for most substantial component styling work.
+- Use style props for small, isolated adjustments, not as a primary styling system.
+- Use inline `style` only for narrow exceptions or CSS variable injection.
+- Use CSS layers when framework stylesheet ordering is unreliable.
+
 ### Theming
 
 - Centralize visual decisions in Mantine theme overrides when the change affects more than one component.
 - Prefer `createTheme` and provider-level customization over one-off ad hoc styling when the change is systemic.
 - Match the host repository’s styling and theming approach before introducing new conventions.
 - Keep provider configuration conservative unless the project explicitly needs custom color scheme persistence or CSS variable scoping.
+- Use theme tokens and theme object overrides instead of hardcoded styling values when the decision is global or reusable.
 
 ## High-Value Component Families
 
@@ -117,17 +129,22 @@ Baseline assumptions from Mantine's getting-started and `@mantine/core` package 
 - If the requested feature maps directly to an official extension, check that package before designing a custom subsystem.
 - If the feature is a non-trivial form, check whether `@mantine/form` should own state and validation before building custom form plumbing.
 - If the feature needs custom interaction logic, check whether a Mantine hook already solves the problem before adding bespoke utilities.
+- If the styling change affects many components, move it into `createTheme` or component defaults instead of repeating local overrides.
+- If color scheme logic depends on resolved light or dark mode, use computed scheme logic instead of branching on raw `auto`.
 
 ## Failure Modes To Check
 
 - `MantineProvider` missing or mounted too low in the tree.
 - Required package CSS files not imported.
+- Mantine style imports in the wrong order.
 - SSR app missing `ColorSchemeScript` or `mantineHtmlProps`, causing hydration warnings or color-scheme flashes.
 - Feature implemented with custom wrappers where Mantine already provides a better primitive.
 - Unnecessary `@mantine/*` packages added without an actual feature need.
 - Community extension adopted without checking maintenance, compatibility, or necessity.
 - Form implemented with fragmented state where `@mantine/form` would be more coherent.
 - Provider configured multiple times or with unnecessary advanced options.
+- Too many style props or inline styles used where CSS modules or theme overrides would be more maintainable.
+- Raw `colorScheme === 'dark'` checks used where `auto` mode makes computed scheme necessary.
 - Project styling conflicts caused by bypassing existing Mantine theme structure.
 
 ## Output Expectations

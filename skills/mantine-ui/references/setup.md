@@ -39,6 +39,7 @@ Typical root pattern:
 4. Wrap the app with `MantineProvider`.
 
 For provider-specific behavior beyond basic setup, see [provider-and-theme.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/mantine-ui/references/provider-and-theme.md).
+For styling strategy and stylesheet ordering, see [styling.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/mantine-ui/references/styling.md).
 
 Core docs pattern:
 
@@ -60,6 +61,7 @@ export function AppRoot() {
 - `@mantine/core/styles.css` is required for Mantine core components.
 - Additional package CSS is required only when using those package components.
 - Import these styles once at the root, not repeatedly inside leaf components.
+- Import `@mantine/core` styles before other Mantine package styles.
 
 Examples of optional package styles:
 
