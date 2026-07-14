@@ -1,0 +1,126 @@
+---
+name: mantine-ui
+description: Use this skill when building or refactoring React interfaces with Mantine UI, especially when working with @mantine/core components, MantineProvider setup, theme overrides, CSS imports, responsive layout primitives, overlays, form-oriented inputs, navigation components, or Mantine-based application shells.
+---
+
+# Mantine UI
+
+Use this skill when the project already uses Mantine or when the user explicitly wants Mantine UI components and patterns.
+
+Do not use this skill for generic React UI work unless Mantine is already in the stack or introducing Mantine is a deliberate requirement.
+
+Validate the installed Mantine version before relying on a specific API shape. The guidance below is aligned with the official Mantine docs reviewed on July 14, 2026.
+
+Baseline assumptions from Mantine's getting-started and `@mantine/core` package docs:
+
+- Mantine is a React UI library with accessible, production-ready components and hooks.
+- The main foundation packages are `@mantine/core` and `@mantine/hooks`.
+- Mantine requires app-level setup, not just individual component imports.
+- Mantine components require CSS imports from the packages you use.
+
+## Read These References When Needed
+
+- Read [references/setup.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/mantine-ui/references/setup.md) when the task involves initial installation, provider setup, theme creation, CSS imports, SSR color scheme setup, PostCSS configuration, or deciding which `@mantine/*` packages to add.
+- Read [references/extensions.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/mantine-ui/references/extensions.md) when the requested feature may require Mantine dates, charts, notifications, spotlight, carousel, dropzone, modals, rich text editor, navigation progress, or a Mantine-compatible community extension.
+
+## Workflow
+
+1. Inspect the existing codebase first.
+2. Confirm the project already has Mantine installed, or determine whether adding Mantine is actually intended.
+3. Confirm which `@mantine/*` packages are needed for the requested feature.
+4. Ensure root setup is correct before adding feature components.
+5. Prefer Mantine primitives and patterns over rebuilding equivalent UI behavior from scratch.
+6. Keep theme, layout, and component composition aligned with existing project conventions.
+7. Verify responsive behavior, focus behavior, and provider-level setup after the change.
+
+## Core Rules
+
+### Setup
+
+- `@mantine/core` is required for Mantine component usage.
+- `@mantine/hooks` is also part of the standard foundation setup.
+- Mantine components should live under a correctly configured `MantineProvider`.
+- Load required CSS files at the app root, including additional package styles only for packages actually used.
+- If the app uses SSR, set up `ColorSchemeScript` and `mantineHtmlProps` correctly to avoid hydration warnings.
+
+### Package Selection
+
+- Start with `@mantine/core` and `@mantine/hooks`.
+- Add additional packages only when the requested feature needs them, for example:
+  - `@mantine/form`
+  - `@mantine/dates`
+  - `@mantine/notifications`
+  - `@mantine/modals`
+  - `@mantine/spotlight`
+  - `@mantine/charts`
+- Avoid installing broad package sets by default.
+- Prefer official Mantine extensions before custom-building complex feature areas that Mantine already covers.
+- Treat community extensions as optional and verify fit before adopting them.
+
+### Component Strategy
+
+- Prefer Mantine components for layout, inputs, overlays, navigation, typography, and feedback when Mantine is the UI system in use.
+- Use Mantine layout primitives such as `AppShell`, `Container`, `Grid`, `Flex`, `Group`, and `Stack` before inventing custom layout wrappers.
+- Use Mantine overlay primitives such as `Modal`, `Drawer`, `Popover`, `Menu`, `Tooltip`, `Dialog`, and `HoverCard` when they fit the interaction model.
+- Use Mantine input and selection components before custom-building routine form controls.
+- Use official Mantine extensions when the requested feature is closer to a specialized subsystem than a single component.
+
+### Theming
+
+- Centralize visual decisions in Mantine theme overrides when the change affects more than one component.
+- Prefer `createTheme` and provider-level customization over one-off ad hoc styling when the change is systemic.
+- Match the host repository’s styling and theming approach before introducing new conventions.
+
+## High-Value Component Families
+
+- Layout: `AppShell`, `Container`, `Grid`, `SimpleGrid`, `Flex`, `Group`, `Stack`
+- Inputs: `TextInput`, `Textarea`, `NumberInput`, `Checkbox`, `Radio`, `Switch`, `NativeSelect`, `FileInput`
+- Combobox family: `Autocomplete`, `Combobox`, `MultiSelect`, `Select`, `TagsInput`, `TreeSelect`
+- Buttons: `Button`, `ActionIcon`, `CloseButton`, `UnstyledButton`
+- Navigation: `NavLink`, `Tabs`, `Pagination`, `Stepper`, `Breadcrumbs`
+- Feedback: `Alert`, `Notification`, `Loader`, `Progress`, `Skeleton`
+- Overlays: `Dialog`, `Drawer`, `HoverCard`, `Menu`, `Menubar`, `Modal`, `Popover`, `Tooltip`
+- Data display and typography: `Card`, `Avatar`, `Badge`, `ThemeIcon`, `Text`, `Title`, `List`, `Code`
+
+## High-Value Extensions
+
+- `@mantine/dates`: date and time pickers, calendars
+- `@mantine/charts`: charts and data visualization
+- `@mantine/notifications`: app-wide notifications
+- `@mantine/spotlight`: command palette and global search
+- `@mantine/carousel`: carousels
+- `@mantine/dropzone`: drag-and-drop file capture
+- `@mantine/modals`: centralized modal manager
+- `@mantine/tiptap`: rich text editing
+- `@mantine/nprogress`: navigation progress indicators
+- `@mantine/code-highlight`: syntax-highlighted code blocks
+
+## Implementation Guidance
+
+- If the task is bootstrapping a Mantine project, prefer an official Mantine template when that fits the environment.
+- For new SPAs, Mantine docs recommend Vite.
+- For SSR applications, Mantine docs recommend Next.js.
+- Avoid Create React App for new Mantine work unless the repository already depends on it and there is no migration scope.
+- If a framework is not officially supported, verify that PostCSS and Mantine CSS setup are explicitly handled.
+- If the requested feature maps directly to an official extension, check that package before designing a custom subsystem.
+
+## Failure Modes To Check
+
+- `MantineProvider` missing or mounted too low in the tree.
+- Required package CSS files not imported.
+- SSR app missing `ColorSchemeScript` or `mantineHtmlProps`, causing hydration warnings or color-scheme flashes.
+- Feature implemented with custom wrappers where Mantine already provides a better primitive.
+- Unnecessary `@mantine/*` packages added without an actual feature need.
+- Community extension adopted without checking maintenance, compatibility, or necessity.
+- Project styling conflicts caused by bypassing existing Mantine theme structure.
+
+## Output Expectations
+
+When using this skill, produce code that:
+
+- uses Mantine components and packages intentionally
+- preserves proper provider and CSS setup
+- fits the host framework and rendering model
+- uses Mantine layout and overlay primitives where appropriate
+- keeps global theming decisions centralized
+- avoids unnecessary package sprawl
