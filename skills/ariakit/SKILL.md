@@ -25,6 +25,7 @@ Baseline assumptions from Ariakit's getting-started guide:
 - Read [references/coding-guidelines.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/ariakit/references/coding-guidelines.md) when creating new Ariakit wrappers, examples, or documentation-quality code and the host repository does not already impose a different style.
 - Read [references/examples-checkbox.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/ariakit/references/examples-checkbox.md) when implementing custom checkbox visuals, checkbox-as-button toggles, or grouped checkbox selection.
 - Read [references/examples-combobox.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/ariakit/references/examples-combobox.md) when implementing advanced combobox behavior such as filtering, disclosure, cancel controls, grouped items, multi-select, links, textarea rendering, tabs, or Radix integration.
+- Read [references/examples-dialog.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/ariakit/references/examples-dialog.md) when implementing animated dialogs, command palettes, nested dialogs, router-controlled modals, custom backdrops, toast interoperability, or Radix-style dialog wrappers.
 
 ## Workflow
 
