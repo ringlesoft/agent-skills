@@ -27,6 +27,7 @@ Baseline assumptions from Ariakit's getting-started guide:
 - Read [references/examples-combobox.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/ariakit/references/examples-combobox.md) when implementing advanced combobox behavior such as filtering, disclosure, cancel controls, grouped items, multi-select, links, textarea rendering, tabs, or Radix integration.
 - Read [references/examples-dialog.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/ariakit/references/examples-dialog.md) when implementing animated dialogs, command palettes, nested dialogs, router-controlled modals, custom backdrops, toast interoperability, or Radix-style dialog wrappers.
 - Read [references/examples-disclosure-form-hovercard.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/ariakit/references/examples-disclosure-form-hovercard.md) when implementing animated disclosures, form radios, form-integrated selects, or keyboard-accessible hovercards.
+- Read [references/examples-menu.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/ariakit/references/examples-menu.md) when implementing searchable menus, context menus, animated menus, checkbox or radio menu items, nested submenus, sliding menu panels, or tooltip-enhanced menu triggers.
 - Read [references/examples-menubar.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/ariakit/references/examples-menubar.md) when implementing rich site or app navigation with `Menubar`, grouped submenus, and mixed link/menu top-level items.
 
 ## Workflow
