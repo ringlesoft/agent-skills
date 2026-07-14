@@ -11,16 +11,30 @@ Do not use this skill for generic React UI work unless Ariakit is already part o
 
 Validate the installed Ariakit version before relying on a specific API shape. The guidance below is aligned with the official Ariakit API reference reviewed on July 14, 2026.
 
+Baseline assumptions from Ariakit's getting-started guide:
+
+- Ariakit is a React library for accessible, lower-level UI primitives.
+- It expects `react` and `react-dom`; the guide states React 17 or newer.
+- The main package is `@ariakit/react`.
+- Components are unstyled by default.
+
+## Read These References When Needed
+
+- Read [references/providers-and-stores.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/ariakit/references/providers-and-stores.md) when the task involves controlled state, uncontrolled defaults, shared stores, `useStoreState`, `getState()`, provider boundaries, or context-based helper components.
+- Read [references/composition-and-styling.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/ariakit/references/composition-and-styling.md) when the task requires `render`, custom elements, router integration, motion libraries, design-system wrappers, overlay animation, or advanced Ariakit styling.
+- Read [references/coding-guidelines.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/ariakit/references/coding-guidelines.md) when creating new Ariakit wrappers, examples, or documentation-quality code and the host repository does not already impose a different style.
+
 ## Workflow
 
 1. Inspect the existing codebase first.
-2. Confirm which Ariakit primitive matches the requested behavior.
-3. Create the correct store hook for that primitive.
-4. Share store state through the matching provider when multiple related subcomponents are involved.
-5. Compose the UI from Ariakit primitives instead of rebuilding ARIA behavior manually.
-6. Add styling separately; Ariakit does not provide presentation.
-7. Verify focus handling, keyboard behavior, and open/close state after the change.
-8. Prefer current API names over deprecated ones.
+2. Confirm the project has `@ariakit/react` and compatible React dependencies before introducing new Ariakit code.
+3. Confirm which Ariakit primitive matches the requested behavior.
+4. Create the correct store hook for that primitive.
+5. Share store state through the matching provider when multiple related subcomponents are involved.
+6. Compose the UI from Ariakit primitives instead of rebuilding ARIA behavior manually.
+7. Add styling separately; Ariakit does not provide presentation.
+8. Verify focus handling, keyboard behavior, and open/close state after the change.
+9. Prefer current API names over deprecated ones.
 
 ## Core Rules
 
@@ -29,8 +43,9 @@ Validate the installed Ariakit version before relying on a specific API shape. T
 - Ariakit components are headless and state-driven.
 - Prefer the primitive-specific store hook such as `useDialogStore`, `useMenuStore`, `useSelectStore`, or `useComboboxStore`.
 - Update component state through the store API instead of ad hoc DOM manipulation.
-- When consuming store state in custom logic, prefer `useStoreState` instead of duplicating state in React.
-- If a selector is used with `useStoreState`, ensure the selector declares every store key it reads so updates do not go stale.
+- Prefer `useStoreState` for reactive reads and `store.getState()` for event-time reads.
+- Prefer dedicated store helpers such as `setOpen`, `setValue`, `show`, `hide`, or `toggle` over generic mutation when available.
+- Load the providers and stores reference file before implementing non-trivial controlled or shared state patterns.
 
 ### Composition
 
@@ -38,6 +53,9 @@ Validate the installed Ariakit version before relying on a specific API shape. T
 - Prefer composition over custom event choreography.
 - When a component family expects a provider, keep all related children inside it.
 - Use labels, headings, descriptions, groups, rows, and separators from the same family so ARIA relationships are wired automatically.
+- Prefer the `render` prop over rebuilding an Ariakit primitive manually.
+- Custom components passed through `render` must be open for extension: they must forward refs, spread props, merge `className` and `style`, and chain events.
+- Load the composition and styling reference file before implementing custom wrappers or alternate rendered elements.
 
 ### Accessibility
 
@@ -53,6 +71,8 @@ Validate the installed Ariakit version before relying on a specific API shape. T
 - Add classes, CSS modules, Tailwind utilities, or styled wrappers explicitly.
 - Avoid coupling behavior to visual selectors when the store state already expresses intent.
 - Prefer data attributes, store state, and documented composition points over DOM structure assumptions.
+- Preserve focus-visible treatment and prefer Ariakit data attributes for transitions.
+- Use Ariakit overlay CSS variables when viewport height or transform origin matter.
 
 ## Canonical Family Pattern
 
@@ -69,6 +89,7 @@ Default approach:
 - Use the provider when the family includes multiple coordinated descendants or when you want implicit context wiring.
 - Pass `store` explicitly when composition is shallow or local.
 - Keep business logic in surrounding React code; let Ariakit own interaction semantics.
+- If provider-vs-store ownership is unclear, read the providers and stores reference file before coding.
 
 ## Primitive Selection
 
@@ -192,6 +213,8 @@ Use higher-level families before low-level ones. Reach for `Menu`, `Select`, `Ta
 
 ## Implementation Guidance
 
+- If Ariakit is not installed yet and the task requires adding it, install `@ariakit/react` rather than older package names or ad hoc subpackages.
+- Do not use the CDN setup for production work; the getting-started guide presents it as development-only.
 - Keep open state controlled when the surrounding feature already owns it.
 - Use the `render` prop or supported element overrides when integration with an existing design system requires different DOM elements.
 - Expect overlays such as dialogs, popovers, and hovercards to use portals unless configured otherwise.
@@ -199,6 +222,7 @@ Use higher-level families before low-level ones. Reach for `Menu`, `Select`, `Ta
 - Prefer official subcomponents over manual ids and aria attributes when a family provides them.
 - Prefer context hooks such as `useDialogContext`, `useMenuContext`, `useSelectContext`, or similar only inside components that genuinely live within that family boundary.
 - If a design system wrapper is needed, wrap Ariakit primitives without stripping their store, role, focus, or labeling behavior.
+- Match the host repository’s style before applying Ariakit’s own documentation-style conventions for imports or `forwardRef`.
 
 ## Deprecated APIs To Avoid
 
@@ -221,6 +245,9 @@ Use higher-level families before low-level ones. Reach for `Menu`, `Select`, `Ta
 - Replacing `FormControl` with native assumptions for a custom component and silently dropping value synchronization.
 - Changing popup roles from the defaults without updating the surrounding interaction model.
 - Reintroducing deprecated APIs from old examples or older codebases.
+- Passing a custom component through `render` that does not forward props and refs correctly.
+- Styling overlays as if they were rendered inline when they are actually portaled.
+- Reading whole-store state in many child components when a narrow property or computed selector would be more stable.
 
 ## Output Expectations
 
