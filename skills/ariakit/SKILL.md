@@ -29,6 +29,8 @@ Baseline assumptions from Ariakit's getting-started guide:
 - Read [references/examples-disclosure-form-hovercard.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/ariakit/references/examples-disclosure-form-hovercard.md) when implementing animated disclosures, form radios, form-integrated selects, or keyboard-accessible hovercards.
 - Read [references/examples-menu.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/ariakit/references/examples-menu.md) when implementing searchable menus, context menus, animated menus, checkbox or radio menu items, nested submenus, sliding menu panels, or tooltip-enhanced menu triggers.
 - Read [references/examples-menubar.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/ariakit/references/examples-menubar.md) when implementing rich site or app navigation with `Menubar`, grouped submenus, and mixed link/menu top-level items.
+- Read [references/examples-popover.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/ariakit/references/examples-popover.md) when implementing lazy-loaded popovers, responsive positioning overrides, selection-anchored popovers, or standalone popover abstractions with custom anchors.
+- Read [references/examples-select.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/ariakit/references/examples-select.md) when implementing animated selects, searchable selects, tabbed selects, grouped or grid option layouts, custom item rendering, multi-select behavior, or Next.js router-controlled select state.
 
 ## Workflow
 
