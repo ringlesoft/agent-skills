@@ -22,6 +22,8 @@ Baseline assumptions from Mantine's getting-started and `@mantine/core` package 
 
 - Read [references/setup.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/mantine-ui/references/setup.md) when the task involves initial installation, provider setup, theme creation, CSS imports, SSR color scheme setup, PostCSS configuration, or deciding which `@mantine/*` packages to add.
 - Read [references/extensions.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/mantine-ui/references/extensions.md) when the requested feature may require Mantine dates, charts, notifications, spotlight, carousel, dropzone, modals, rich text editor, navigation progress, or a Mantine-compatible community extension.
+- Read [references/form-and-hooks.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/mantine-ui/references/form-and-hooks.md) when the task involves `@mantine/form`, input binding, validation, `getInputProps`, uncontrolled form mode, or Mantine hooks for custom interactions and state management.
+- Read [references/provider-and-theme.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/mantine-ui/references/provider-and-theme.md) when the task involves advanced `MantineProvider` behavior, color scheme persistence, forced color schemes, CSS variable injection, or root-level theme configuration.
 
 ## Workflow
 
@@ -42,6 +44,8 @@ Baseline assumptions from Mantine's getting-started and `@mantine/core` package 
 - Mantine components should live under a correctly configured `MantineProvider`.
 - Load required CSS files at the app root, including additional package styles only for packages actually used.
 - If the app uses SSR, set up `ColorSchemeScript` and `mantineHtmlProps` correctly to avoid hydration warnings.
+- `MantineProvider` should be mounted once at the application root.
+- Use advanced provider props only when the application actually needs them.
 
 ### Package Selection
 
@@ -56,6 +60,7 @@ Baseline assumptions from Mantine's getting-started and `@mantine/core` package 
 - Avoid installing broad package sets by default.
 - Prefer official Mantine extensions before custom-building complex feature areas that Mantine already covers.
 - Treat community extensions as optional and verify fit before adopting them.
+- `@mantine/form` is the default Mantine form-state package when form complexity exceeds trivial local state.
 
 ### Component Strategy
 
@@ -64,12 +69,14 @@ Baseline assumptions from Mantine's getting-started and `@mantine/core` package 
 - Use Mantine overlay primitives such as `Modal`, `Drawer`, `Popover`, `Menu`, `Tooltip`, `Dialog`, and `HoverCard` when they fit the interaction model.
 - Use Mantine input and selection components before custom-building routine form controls.
 - Use official Mantine extensions when the requested feature is closer to a specialized subsystem than a single component.
+- Use Mantine hooks to support custom interaction logic when they clearly reduce glue code and fit the existing stack.
 
 ### Theming
 
 - Centralize visual decisions in Mantine theme overrides when the change affects more than one component.
 - Prefer `createTheme` and provider-level customization over one-off ad hoc styling when the change is systemic.
 - Match the host repository’s styling and theming approach before introducing new conventions.
+- Keep provider configuration conservative unless the project explicitly needs custom color scheme persistence or CSS variable scoping.
 
 ## High-Value Component Families
 
@@ -81,6 +88,11 @@ Baseline assumptions from Mantine's getting-started and `@mantine/core` package 
 - Feedback: `Alert`, `Notification`, `Loader`, `Progress`, `Skeleton`
 - Overlays: `Dialog`, `Drawer`, `HoverCard`, `Menu`, `Menubar`, `Modal`, `Popover`, `Tooltip`
 - Data display and typography: `Card`, `Avatar`, `Badge`, `ThemeIcon`, `Text`, `Title`, `List`, `Code`
+
+## High-Value Supporting Packages
+
+- `@mantine/form`: `useForm`, validation, submission, field wiring
+- `@mantine/hooks`: DOM, state, utility, and lifecycle hooks for custom behavior
 
 ## High-Value Extensions
 
@@ -103,6 +115,8 @@ Baseline assumptions from Mantine's getting-started and `@mantine/core` package 
 - Avoid Create React App for new Mantine work unless the repository already depends on it and there is no migration scope.
 - If a framework is not officially supported, verify that PostCSS and Mantine CSS setup are explicitly handled.
 - If the requested feature maps directly to an official extension, check that package before designing a custom subsystem.
+- If the feature is a non-trivial form, check whether `@mantine/form` should own state and validation before building custom form plumbing.
+- If the feature needs custom interaction logic, check whether a Mantine hook already solves the problem before adding bespoke utilities.
 
 ## Failure Modes To Check
 
@@ -112,6 +126,8 @@ Baseline assumptions from Mantine's getting-started and `@mantine/core` package 
 - Feature implemented with custom wrappers where Mantine already provides a better primitive.
 - Unnecessary `@mantine/*` packages added without an actual feature need.
 - Community extension adopted without checking maintenance, compatibility, or necessity.
+- Form implemented with fragmented state where `@mantine/form` would be more coherent.
+- Provider configured multiple times or with unnecessary advanced options.
 - Project styling conflicts caused by bypassing existing Mantine theme structure.
 
 ## Output Expectations

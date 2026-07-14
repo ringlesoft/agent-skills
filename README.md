@@ -25,14 +25,13 @@ skills/
 Install a skill with the skills CLI:
 
 ```bash
-npx skills install <skill-source>
+npx skills add ringlesoft/agent-skills <skill>
 ```
 
 Examples:
 
 ```bash
-npx skills install <git-repo-or-local-path>
-npx skills install ./skills/ariakit
+npx skills add ringlesoft/agent-skills <skill>
 ```
 
 If the target environment does not use the CLI, copy or symlink the desired skill folder into that agent's skills directory instead.
@@ -72,7 +71,7 @@ The body should stay lean. Detailed reference material belongs in `references/`,
 
 ## Using a Skill
 
-1. Install the skill with `npx skills install <skill-source>` or copy it into the target skills directory.
+1. Install the skill with `npx skills add ringlesoft/agent-skills <skill-source>` or copy it into the target skills directory.
 2. Ensure the folder name matches the skill name.
 3. Keep the `description` specific enough that the agent knows when to activate it.
 

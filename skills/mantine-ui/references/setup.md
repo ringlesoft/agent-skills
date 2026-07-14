@@ -38,6 +38,8 @@ Typical root pattern:
 3. Create a theme with `createTheme` if theme overrides are needed.
 4. Wrap the app with `MantineProvider`.
 
+For provider-specific behavior beyond basic setup, see [provider-and-theme.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/mantine-ui/references/provider-and-theme.md).
+
 Core docs pattern:
 
 ```tsx
@@ -130,6 +132,8 @@ For new projects, prefer official templates when possible because they include t
 - typography and data display components
 
 It is also required by many other `@mantine/*` packages.
+
+For forms and hooks beyond the root setup phase, see [form-and-hooks.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/mantine-ui/references/form-and-hooks.md).
 
 ## Practical Rules
 
