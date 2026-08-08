@@ -20,12 +20,15 @@ Baseline assumptions from Mantine's getting-started and `@mantine/core` package 
 
 ## Read These References When Needed
 
-- Read [references/setup.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/mantine-ui/references/setup.md) when the task involves initial installation, provider setup, theme creation, CSS imports, SSR color scheme setup, PostCSS configuration, or deciding which `@mantine/*` packages to add.
-- Read [references/extensions.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/mantine-ui/references/extensions.md) when the requested feature may require Mantine dates, charts, notifications, spotlight, carousel, dropzone, modals, rich text editor, navigation progress, or a Mantine-compatible community extension.
-- Read [references/form-and-hooks.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/mantine-ui/references/form-and-hooks.md) when the task involves `@mantine/form`, input binding, validation, `getInputProps`, uncontrolled form mode, or Mantine hooks for custom interactions and state management.
-- Read [references/provider-and-theme.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/mantine-ui/references/provider-and-theme.md) when the task involves advanced `MantineProvider` behavior, color scheme persistence, forced color schemes, CSS variable injection, or root-level theme configuration.
-- Read [references/styling.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/mantine-ui/references/styling.md) when the task involves CSS imports, CSS modules, style props, inline styles, stylesheet ordering, CSS layers, or theme-token-based styling.
-- Read [references/theme-system.md](/Users/ringle/Documents/PERSONAL/Projects/AI/agent-skills/skills/mantine-ui/references/theme-system.md) when the task involves `createTheme`, theme object overrides, custom colors, semantic colors, color schemes, or app-wide component defaults.
+- Read [references/setup.md](references/setup.md) when the task involves initial installation, provider setup, theme creation, CSS imports, SSR color scheme setup, PostCSS configuration, or deciding which `@mantine/*` packages to add.
+- Read [references/extensions.md](references/extensions.md) when the requested feature may require Mantine dates, charts, notifications, spotlight, carousel, dropzone, modals, rich text editor, navigation progress, or a Mantine-compatible community extension.
+- Read [references/form-and-hooks.md](references/form-and-hooks.md) when the task involves `@mantine/form`, input binding, validation, `getInputProps`, uncontrolled form mode, or Mantine hooks for custom interactions and state management.
+- Read [references/provider-and-theme.md](references/provider-and-theme.md) when the task involves advanced `MantineProvider` behavior, color scheme persistence, forced color schemes, CSS variable injection, or root-level theme configuration.
+- Read [references/styling.md](references/styling.md) when the task involves CSS imports, CSS modules, style props, inline styles, stylesheet ordering, CSS layers, or theme-token-based styling.
+- Read [references/theme-system.md](references/theme-system.md) when the task involves `createTheme`, theme object overrides, custom colors, semantic colors, color schemes, or app-wide component defaults.
+- Read [references/migration-guides.md](references/migration-guides.md) when upgrading between Mantine major versions or Tiptap 2 to 3.
+- Read [references/framework-guides.md](references/framework-guides.md) when configuring Mantine with Next.js, Vite, React Router, Gatsby, or RedwoodJS.
+- Read [references/integrations.md](references/integrations.md) when the task involves Storybook, TypeScript or JavaScript usage, Jest or Vitest, Oxlint/Oxfmt, LLM documentation or MCP, or icon libraries.
 
 ## Workflow
 
