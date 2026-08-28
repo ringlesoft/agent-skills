@@ -43,7 +43,8 @@ This table should be updated as new skills are added.
 | Skill | Status | Purpose |
 | --- | --- | --- |
 | `ariakit` | Ready | Guidance for building accessible React UI with Ariakit headless components and correct store/provider wiring. |
-| `mantine-ui` | In progress | Reserved for Mantine UI skill content. |
+| `mantine-ui` | Ready | Mantine UI skill guidance. |
+| modern-cli-tools | Ready | Faster and Modern replacement for legacy CLI tools. |
 
 ## Skill Format
 
